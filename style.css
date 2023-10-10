@@ -1,0 +1,157 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --card-background-color-1:grey;
+  --card-background-color-2: #ffffff;
+  --card-text: #000000;
+  --card-button-color-1:grey;
+  --card-button-color-2:#ffffff;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  min-height: 100vh;
+  caret-color: transparent;
+}
+
+section {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.single-player, .multi-player {
+  width:10rem;
+  height:5rem;
+  border: 1px red solid;
+}
+
+.btn {
+  padding: 1rem .5rem;
+}
+
+.panel, .choose-deck, .deal-cards {
+  display: none;
+}
+
+
+
+.deck-container {
+  display: grid;
+  width: 90%;
+  width: 30rem;
+  grid-template-columns: 15rem 15rem;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 
+  "G S"
+  "R H";
+  margin: 1rem auto; 
+  gap: 0.25rem;
+}
+
+.deck-choice {
+  aspect-ratio: 0.6/1;
+  transition: all 2s;
+  cursor: pointer;
+  border-radius: 15px;
+  box-shadow: rgb(3, 5, 7) 0px 20px 30px -10px;
+  perspective: 1000px; 
+}
+
+.card-logo {
+  filter: drop-shadow(10px 10px 10px #000);
+  width: 90%;
+}
+
+.front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  display: grid;
+  place-items: center;
+}
+
+.back{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden;
+  transform: rotateX(0deg);
+  display: grid;
+  place-items: center;
+}
+
+.expanded-deck {
+  border-radius: 10px;
+  transition: all 2s;
+}    
+
+.gr-translate {
+  transform: scale(2, 2) translate(25%, 25%)  rotateY(540deg);
+}
+
+.sl-translate {
+  transform:scale(2, 2) translate(-25%, 25%) rotateY(540deg);
+}
+
+.rc-translate {
+  transform:scale(2, 2) translate(25%, -25%) rotateY(540deg);
+}
+
+.hp-translate {
+  transform:scale(2, 2) translate(-25%, -25%) rotateY(540deg);
+}
+
+.shrunk-deck {
+  transform: scale(0,0);
+  transition: all 1s;
+  opacity: 0;
+}
+
+#gryffindorDeck{
+  background-image:linear-gradient(135deg, #D3A625,#D3A625, #fff);
+  grid-area: G;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+#slytherinDeck{
+  background-image:linear-gradient(225deg, #1A472A,#1A472A,#fff);
+  grid-area: S;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+#ravenclawDeck{
+  background-image:linear-gradient(45deg, #222F5B,#222F5B,#fff);
+  grid-area: R;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+#hufflepuffDeck{
+  background-image:linear-gradient(315deg, #60605C,#60605C,#fff);
+  grid-area: H;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+

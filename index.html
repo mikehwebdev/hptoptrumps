@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Harry Potter Top Trumps</title>
+        <link href="/style.css" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel='icon' href='./images/favicon.ico' type='image/x-icon/'>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    </head>
+    <body> 
+        <main> 
+          <section class="welcome visible">
+            <h1 class="main-title"> Harry Potter Top Trumps</h1>
+            <button class="start-game btn" id="startGame">Start Game</button>
+          </section>
+          <section class="choose-players">
+            <div class="single-player" id="player1Button">1 player</div>
+            <div class="multi-player" id="player2Button">2 players</div>
+            <div class="player1-inputs panel">
+              <label for="player1">Player 1</label>
+              <input type="text" placeholder="Player 1" id="player1">
+            </div>
+            <div class="player2-inputs panel">
+              <label for="player2">Player 2</label>
+              <input type="text" placeholder="Player 2" id="player2">
+            </div>
+            <button class="choose-deck btn" id="chooseDeck">Choose your deck style</button>
+          </section>
+          <section class="choose-your-deck">
+              <h2>Choose your deck</h2>
+              <div class="deck-container">
+              <div id="gryffindorDeck" class="deck-choice">
+                  <div class="front">Gryffindor</div>
+                  <div class="back"><img class="card-logo" src="images/deck-logo.png" alt="Hogwarts logo"/></div>
+              </div>
+              <div id="slytherinDeck" class="deck-choice">
+                  <div class="front">Slytherin</div>
+                  <div class="back"><img class="card-logo" src="images/deck-logo.png" alt="Hogwarts logo"/></div>
+              </div>
+              <div id="ravenclawDeck" class="deck-choice">
+                  <div class="front">Ravenclaw</div>
+                  <div class="back"><img class="card-logo" src="images/deck-logo.png" alt="Hogwarts logo"/></div>
+              </div>
+              <div id="hufflepuffDeck" class="deck-choice">
+                  <div class="front">Hufflepuff</div>
+                  <div class="back"><img class="card-logo"  src="images/deck-logo.png" alt="Hogwarts logo"/></div>
+              </div>
+            </div>
+            <button class="choose-first-player btn" id="chooseFirst">Who goes first?</button>
+          </section>
+          <section class="roll-dice">
+            <div class="dice-grid">
+              <h2>Who goes first?</h2>
+              <p class="players-names"></p>
+              <div class="dice1"><img src="images/1.png"></div>
+              <div class="dice2"><img src="images/1.png"></div>
+              <button id="dice" class="roll-dice btn">Roll!</button>
+              <p class="roll-result"></p>
+              <button class="deal-cards btn" id="dealCards">Deal Cards</button>
+            </div>  
+          </section>
+        </main>   
+        <script type="module" src="main.js" ></script>
+    </body>
+</html>
+
+
+
+
