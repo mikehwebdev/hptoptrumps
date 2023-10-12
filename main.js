@@ -1,11 +1,13 @@
 
-import { diceRoll } from "./utils"
+import { diceRoll, render, splitDeck, initiateBattle } from "./utils"
 
 const welcomePageSection = document.querySelector('.welcome')
 const choosePlayersSection = document.querySelector('.choose-players')
 const chooseDeckSection = document.querySelector('.choose-your-deck')
 const rollDiceSection = document.querySelector('.roll-dice')
+const battlefieldSection = document.querySelector('.battlefield')
 
+const chooseDeckBtn = document.getElementById('chooseDeck')
 const diceRollBtn = document.getElementById('dice')
 const dealCardsBtn = document.getElementById('dealCards')
 
@@ -37,7 +39,7 @@ let gameType = ''
 let diceScore1 = 0
 let diceScore2 = 0
 
-// Event listeners for navigation buttons
+// Event listeners for navigation 
 
 document.getElementById('startGame').addEventListener('click',()=>{
   welcomePageSection.classList.toggle('visible')
@@ -46,8 +48,6 @@ document.getElementById('startGame').addEventListener('click',()=>{
 
 document.getElementById('chooseDeck').addEventListener('click', ()=>{
   setPlayerNames()
-  console.log(localStorage.getItem('p1name'))
-  console.log(localStorage.getItem('p2name'))
   choosePlayersSection.classList.toggle('visible')
   chooseDeckSection.classList.toggle('visible')
 })
@@ -56,6 +56,22 @@ document.getElementById('chooseFirst').addEventListener('click', ()=>{
   chooseDeckSection.classList.toggle('visible')
   playersNamesEl.innerHTML = `${localStorage.getItem('p1name')} ${localStorage.getItem('p2name')}`
   rollDiceSection.classList.toggle('visible')
+})
+
+//this function displays inputs for names to correspond with the type of game selection (single or 2 player)
+
+playerCountEl.addEventListener('click', (e)=>{
+  if (e.target.id === 'player1Button') {
+    chooseDeckBtn.style.display = 'block'
+    player1InputEl.style.display = 'block'
+    player2InputEl.style.display = 'none'
+    gameType = 'single'
+  } else if (e.target.id === 'player2Button') {
+    player1InputEl.style.display = 'block'
+    chooseDeckBtn.style.display = 'block'
+    player2InputEl.style.display = 'block'
+    gameType = 'multi'
+  }
 })
 
 //setPlayerNames checks for name values entered and sets them in localStorage for later use. If no value is entered defaults are used instead
@@ -126,10 +142,8 @@ hufflepuffDeckEl.addEventListener('click', (e)=>{
 
 //-------------
 
+//this function manages the dice rolling section. It rolls for each player, updating the dice image for each player every 200ms until it hits a count of 20. Once it finishes "rolling" it compares scores, declares a winner and sets a boolean which we will use to track the current turn.
 
-
-
-//this function 
 diceRollBtn.addEventListener('click', ()=>{
   diceRollBtn.disabled = true
   rollResultEl.textContent = ''
@@ -166,16 +180,16 @@ diceRollBtn.addEventListener('click', ()=>{
 
 })
 
-playerCountEl.addEventListener('click', (e)=>{
-  if (e.target.id === 'player1Button') {
-    chooseDeckBtn.style.display = 'block'
-    player1InputEl.style.display = 'block'
-    player2InputEl.style.display = 'none'
-    gameType = 'single'
-  } else if (e.target.id === 'player2Button') {
-    player1InputEl.style.display = 'block'
-    chooseDeckBtn.style.display = 'block'
-    player2InputEl.style.display = 'block'
-    gameType = 'multi'
-  }
+dealCardsBtn.addEventListener('click',()=>{
+
+  splitDeck()
+  rollDiceSection.classList.toggle('visible')
+  battlefieldSection.classList.toggle('visible')
+  initiateBattle()
 })
+
+
+
+
+
+
